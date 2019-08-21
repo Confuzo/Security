@@ -1,13 +1,13 @@
-#Cesar cipher
+# Cesar cipher
 
 - A simple program using brute force to decipher an encripted text
 
-#Compile
+# Compile
 
 to compile make sure that you have g++ iinstalled, just type in terminal:
 
 - ./compile
 
-#Execute
+# Execute
 
 - ./main texto
