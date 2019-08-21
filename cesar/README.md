@@ -4,10 +4,12 @@
 
 # Compile
 
-to compile make sure that you have g++ iinstalled, just type in terminal:
+To compile make sure that you have g++ iinstalled, just type in terminal:
 
 - ./compile
 
 # Execute
 
 - ./main texto
+
+where texto is the text file that you want to dechiper
