@@ -11,38 +11,38 @@ def convert(msg):
     list_ = ''
     for i in msg:
         aux = bin(ord(i))
-        list_ += (aux[2:])
-    print(list_)
+        aux = aux[2:]
+        aux = aux.zfill(8)
+        #print(aux) 
+        list_ += (aux)
+        
+    list_ = list_ + '00000011'
     return list_
 
 def openimage(imagepath):
     return cv.imread(imagepath)
 
 def hidemsg(msg, image):
-    mask = '00000011'
+    print('')
     flag = False
     for x in range(0, image.shape[1]):
         for y in range(0, image.shape[0]):
             for i in range(0, image.shape[2]):
                 if(len(msg) > 0):
                     aux = bin(image[y][x][i])
-                    aux = aux[:6] + msg[0]
+                    aux = aux[:-1] + msg[0]
+                    aux = aux[2:].zfill(8)
+                    #print(aux)
                     msg = msg[1:]
-                    image[y][x][i] = int(aux, 2)
+                    newValue = int(aux,2)
+                    image.itemset((x, y, i), newValue)
                 else:
-                    if(len(mask) > 0):
-                        aux = bin(image[y][x][i])
-                        aux = aux[:6] + mask[0]
-                        mask = mask[1:]
-                        aux = "".join(aux)
-                        image[y][x][i] = int(aux, 2)
-                    else:
-                        flag = True
+                    flag = True
             if flag:
                 break
         if flag:
             break
-    cv.imwrite('resultado.bmp', image)
+    cv.imwrite('resultImg/resultado.bmp', image)
                 
 
 
@@ -53,3 +53,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+
